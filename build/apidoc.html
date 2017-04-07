@@ -1,0 +1,1536 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="http://harpjs.com"
+
+    >harp (v0.23.0)</a>
+</h1>
+<h4>Static web server with built in preprocessing</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.harp">module harp</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.compile">
+            function <span class="apidocSignatureSpan">harp.</span>compile
+            <span class="apidocSignatureSpan">(projectPath, outputPath, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.mount">
+            function <span class="apidocSignatureSpan">harp.</span>mount
+            <span class="apidocSignatureSpan">(mountPoint, root)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.multihost">
+            function <span class="apidocSignatureSpan">harp.</span>multihost
+            <span class="apidocSignatureSpan">(dirPath, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.pipeline">
+            function <span class="apidocSignatureSpan">harp.</span>pipeline
+            <span class="apidocSignatureSpan">(root)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.server">
+            function <span class="apidocSignatureSpan">harp.</span>server
+            <span class="apidocSignatureSpan">(dirPath, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">harp.</span>helpers</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">harp.</span>middleware</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">harp.</span>pkg</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.harp.helpers">module harp.helpers</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.helpers.cssError">
+            function <span class="apidocSignatureSpan">harp.helpers.</span>cssError
+            <span class="apidocSignatureSpan">(error)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.helpers.ls">
+            function <span class="apidocSignatureSpan">harp.helpers.</span>ls
+            <span class="apidocSignatureSpan">(dir, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.helpers.mimeType">
+            function <span class="apidocSignatureSpan">harp.helpers.</span>mimeType
+            <span class="apidocSignatureSpan">(source)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.helpers.normalizeUrl">
+            function <span class="apidocSignatureSpan">harp.helpers.</span>normalizeUrl
+            <span class="apidocSignatureSpan">(url)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.helpers.prime">
+            function <span class="apidocSignatureSpan">harp.helpers.</span>prime
+            <span class="apidocSignatureSpan">(primePath, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.helpers.setup">
+            function <span class="apidocSignatureSpan">harp.helpers.</span>setup
+            <span class="apidocSignatureSpan">(projectPath, env)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.helpers.stacktrace">
+            function <span class="apidocSignatureSpan">harp.helpers.</span>stacktrace
+            <span class="apidocSignatureSpan">(str, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.helpers.willAllow">
+            function <span class="apidocSignatureSpan">harp.helpers.</span>willAllow
+            <span class="apidocSignatureSpan">(projectPath, outputPath)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.helpers.willCollide">
+            function <span class="apidocSignatureSpan">harp.helpers.</span>willCollide
+            <span class="apidocSignatureSpan">(projectPath, outputPath)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.harp.middleware">module harp.middleware</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.middleware.basicAuth">
+            function <span class="apidocSignatureSpan">harp.middleware.</span>basicAuth
+            <span class="apidocSignatureSpan">(req, rsp, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.middleware.fallback">
+            function <span class="apidocSignatureSpan">harp.middleware.</span>fallback
+            <span class="apidocSignatureSpan">(req, rsp, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.middleware.hostProjectFinder">
+            function <span class="apidocSignatureSpan">harp.middleware.</span>hostProjectFinder
+            <span class="apidocSignatureSpan">(dirPath)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.middleware.index">
+            function <span class="apidocSignatureSpan">harp.middleware.</span>index
+            <span class="apidocSignatureSpan">(dirPath)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.middleware.mwl">
+            function <span class="apidocSignatureSpan">harp.middleware.</span>mwl
+            <span class="apidocSignatureSpan">(req, rsp, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.middleware.notFound">
+            function <span class="apidocSignatureSpan">harp.middleware.</span>notFound
+            <span class="apidocSignatureSpan">(req, rsp, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.middleware.notMultihostURL">
+            function <span class="apidocSignatureSpan">harp.middleware.</span>notMultihostURL
+            <span class="apidocSignatureSpan">(req, rsp, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.middleware.poly">
+            function <span class="apidocSignatureSpan">harp.middleware.</span>poly
+            <span class="apidocSignatureSpan">(req, rsp, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.middleware.process">
+            function <span class="apidocSignatureSpan">harp.middleware.</span>process
+            <span class="apidocSignatureSpan">(req, rsp, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.middleware.regProjectFinder">
+            function <span class="apidocSignatureSpan">harp.middleware.</span>regProjectFinder
+            <span class="apidocSignatureSpan">(projectPath)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.middleware.setup">
+            function <span class="apidocSignatureSpan">harp.middleware.</span>setup
+            <span class="apidocSignatureSpan">(req, rsp, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.middleware.static">
+            function <span class="apidocSignatureSpan">harp.middleware.</span>static
+            <span class="apidocSignatureSpan">(req, res, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.harp.middleware.underscore">
+            function <span class="apidocSignatureSpan">harp.middleware.</span>underscore
+            <span class="apidocSignatureSpan">(req, rsp, next)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.harp" id="apidoc.module.harp">module harp</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.harp.compile" id="apidoc.element.harp.compile">
+        function <span class="apidocSignatureSpan">harp.</span>compile
+        <span class="apidocSignatureSpan">(projectPath, outputPath, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">compile = function (projectPath, outputPath, callback){
+
+<span class="apidocCodeCommentSpan">  /**
+   * Both projectPath and outputPath are optional
+   */
+</span>
+  if(!callback){
+    callback   = outputPath
+    outputPath = &#x22;www&#x22;
+  }
+
+  if(!outputPath){
+    outputPath = &#x22;www&#x22;
+  }
+
+
+  /**
+   * Setup all the paths and collect all the data
+   */
+
+  try{
+    outputPath = path.resolve(projectPath, outputPath)
+    var setup  = helpers.setup(projectPath, &#x22;production&#x22;)
+    var terra   = terraform.root(setup.publicPath, setup.config.globals)
+  }catch(err){
+    return callback(err)
+  }
+
+
+  /**
+   * Protect the user (as much as possible) from compiling up the tree
+   * resulting in the project deleting its own source code.
+   */
+
+  if(!helpers.willAllow(projectPath, outputPath)){
+    return callback({
+      type: &#x22;Invalid Output Path&#x22;,
+      message: &#x22;Output path cannot be greater then one level up from project path and must be in directory starting with `_` (underscore
+).&#x22;,
+      projectPath: projectPath,
+      outputPath: outputPath
+    })
+  }
+
+
+  /**
+   * Compile and save file
+   */
+
+  var compileFile = function(file, done){
+    process.nextTick(function () {
+      terra.render(file, function(error, body){
+        if(error){
+          done(error)
+        }else{
+          if(body){
+            var dest = path.resolve(outputPath, terraform.helpers.outputPath(file))
+            fs.mkdirp(path.dirname(dest), function(err){
+              fs.writeFile(dest, body, done)
+            })
+          }else{
+            done()
+          }
+        }
+      })
+    })
+  }
+
+
+  /**
+   * Copy File
+   *
+   * TODO: reference ignore extensions from a terraform helper.
+   */
+  var copyFile = function(file, done){
+    var ext = path.extname(file)
+    if(!terraform.helpers.shouldIgnore(file) &#x26;&#x26; [&#x22;.jade&#x22;, &#x22;.ejs&#x22;, &#x22;.md&#x22;, &#x22;.styl&#x22;, &#x22;.less&#x22;, &#x22;.scss&#x22;, &#x22;.sass&#x22;, &#x22;.coffee&#x22;].indexOf(
+ext) === -1){
+      var localPath = path.resolve(outputPath, file)
+      fs.mkdirp(path.dirname(localPath), function(err){
+        fs.copy(path.resolve(setup.publicPath, file), localPath, done)
+      })
+    }else{
+      done()
+    }
+  }
+
+  /**
+   * Scan dir, Compile Less and Jade, Copy the others
+   */
+
+  helpers.prime(outputPath, { ignore: projectPath }, function(err){
+    if(err) console.log(err)
+
+    helpers.ls(setup.publicPath, function(err, results){
+      async.each(results, compileFile, function(err){
+        if(err){
+          callback(err)
+        }else{
+          async.each(results, copyFile, function(err){
+            setup.config[&#x27;harp_version&#x27;] = pkg.version
+            delete setup.config.globals
+            callback(null, setup.config)
+          })
+        }
+      })
+    })
+  })
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+harp.server(projectPath [,args] [,callback])
+```
+
+**Or** compile harp application
+
+```js
+var harp = require(&#x22;harp&#x22;)
+harp.<span class="apidocCodeKeywordSpan">compile</span>(projectPath [,outputPath] [, callback])
+```
+
+**Or** use as Connect/ExpressJS middleware
+
+```js
+var express = require(&#x22;express&#x22;);
+var harp = require(&#x22;harp&#x22;);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.mount" id="apidoc.element.harp.mount">
+        function <span class="apidocSignatureSpan">harp.</span>mount
+        <span class="apidocSignatureSpan">(mountPoint, root)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">mount = function (mountPoint, root){
+
+  if(!root){
+    root = mountPoint
+    mountPoint = null
+  }else{
+    var rx = new RegExp(&#x22;^&#x22; + mountPoint)
+  }
+
+  var finder = middleware.regProjectFinder(root)
+
+  return function(req, rsp, next){
+
+    if(rx){
+      if(!req.url.match(rx)) return next()
+      var originalUrl = req.url
+      req.url         = req.url.replace(rx, &#x22;/&#x22;)
+    }
+
+    finder(req, rsp, function(){
+      middleware.setup(req, rsp, function(){
+        middleware.static(req, rsp, function(){
+          middleware.poly(req, rsp, function(){
+            middleware.process(req, rsp, function(){
+              if(originalUrl) req.url = originalUrl
+              next()
+            })
+          })
+        })
+      })
+    })
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var app = express();
+```
+
+```js
+// Express 3
+app.configure(function(){
+  app.use(express.static(__dirname + &#x22;/public&#x22;));
+  app.use(harp.<span class="apidocCodeKeywordSpan">mount</span>(__dirname + &#x22;/public&#x22;));
+});
+```
+
+```js
+// Express 4
+
+app.use(express.static(__dirname + &#x22;/public&#x22;));
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.multihost" id="apidoc.element.harp.multihost">
+        function <span class="apidocSignatureSpan">harp.</span>multihost
+        <span class="apidocSignatureSpan">(dirPath, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">multihost = function (dirPath, options, callback){
+  var app = connect()
+  app.use(middleware.notMultihostURL)
+  app.use(middleware.index(dirPath))
+  app.use(middleware.hostProjectFinder(dirPath))
+  app.use(middleware.setup)
+  app.use(middleware.basicAuth)
+  app.use(middleware.underscore)
+  app.use(middleware.mwl)
+  app.use(middleware.static)
+  app.use(middleware.poly)
+  app.use(middleware.process)
+  app.use(middleware.fallback)
+  app.listen(options.port || 9000, callback)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.pipeline" id="apidoc.element.harp.pipeline">
+        function <span class="apidocSignatureSpan">harp.</span>pipeline
+        <span class="apidocSignatureSpan">(root)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pipeline = function (root){
+  console.log(&#x22;Deprecated, please use MOUNT instead, this will be removed in a future version.&#x22;);
+  var publicPath = path.resolve(root)
+  var terra = terraform.root(publicPath)
+
+  return function(req, rsp, next){
+    var normalizedPath  = helpers.normalizeUrl(req.url)
+    var priorityList    = terraform.helpers.buildPriorityList(normalizedPath)
+    var sourceFile      = terraform.helpers.findFirstFile(publicPath, priorityList)
+
+    if(!sourceFile) return next()
+
+    terra.render(sourceFile, function(error, body){
+      if(error) return next(error)
+      if(!body) return next() // 404
+
+      var outputType = terraform.helpers.outputType(sourceFile)
+      var mimeType   = helpers.mimeType(outputType)
+      var charset    = mime.charsets.lookup(mimeType)
+      rsp.statusCode = 200
+      rsp.setHeader(&#x27;Content-Type&#x27;, mimeType + (charset ? &#x27;; charset=&#x27; + charset : &#x27;&#x27;))
+      rsp.setHeader(&#x27;Content-Length&#x27;, Buffer.byteLength(body, charset));
+      rsp.end(body)
+    })
+
+  }
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.server" id="apidoc.element.harp.server">
+        function <span class="apidocSignatureSpan">harp.</span>server
+        <span class="apidocSignatureSpan">(dirPath, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">server = function (dirPath, options, callback){
+  var app = connect()
+  app.use(middleware.regProjectFinder(dirPath))
+  app.use(middleware.setup)
+  app.use(middleware.basicAuth)
+  app.use(middleware.underscore)
+  app.use(middleware.mwl)
+  app.use(middleware.static)
+  app.use(middleware.poly)
+  app.use(middleware.process)
+  app.use(middleware.fallback)
+
+  return app.listen(options.port || 9966, options.ip, function(){
+    app.projectPath = dirPath
+    callback.apply(app, arguments)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+You may also use harp as a node library for compiling or running as a server.
+
+Serve up a harp application...
+
+```js
+var harp = require(&#x22;harp&#x22;)
+harp.<span class="apidocCodeKeywordSpan">server</span>(projectPath [,args] [,callback])
+```
+
+**Or** compile harp application
+
+```js
+var harp = require(&#x22;harp&#x22;)
+harp.compile(projectPath [,outputPath] [, callback])
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.harp.helpers" id="apidoc.module.harp.helpers">module harp.helpers</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.harp.helpers.cssError" id="apidoc.element.harp.helpers.cssError">
+        function <span class="apidocSignatureSpan">harp.helpers.</span>cssError
+        <span class="apidocSignatureSpan">(error)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">cssError = function (error){
+  var body = &#x27;&#x27; +
+
+  &#x27;body{&#x27; +
+    &#x27;margin:0;&#x27; +
+  &#x27;}&#x27; +
+
+  &#x27;body:before {&#x27; +
+    &#x27;display: block;&#x27;+
+    &#x27;white-space: pre;&#x27; +
+    &#x27;content: &#x22;&#x27;+ error.error.source +&#x27; -&#x3e; &#x27; + error.error.dest + &#x27; (&#x27; + error.error.message + &#x27;) &#x27; + error.error.filename + &#x27;&#x22;;&#x27;+
+    &#x27;color: #444;&#x27;+
+    &#x27;background-color: #fefe96;&#x27; +
+    &#x27;padding: 40px 40px;&#x27;+
+    &#x27;margin: 0;&#x27;+
+    &#x27;font-family: monospace;&#x27;+
+    &#x27;font-size: 14px;&#x27;+
+  &#x27;}&#x27;
+
+  return body
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.helpers.ls" id="apidoc.element.harp.helpers.ls">
+        function <span class="apidocSignatureSpan">harp.helpers.</span>ls
+        <span class="apidocSignatureSpan">(dir, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ls = function (dir, callback) {
+  walk(dir, function(err, results){
+    var files = []
+    results.map(function(file){ files.push(path.relative(dir, file)) })
+    callback(null, files)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.helpers.mimeType" id="apidoc.element.harp.helpers.mimeType">
+        function <span class="apidocSignatureSpan">harp.helpers.</span>mimeType
+        <span class="apidocSignatureSpan">(source)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">mimeType = function (source){
+  var ext = path.extname(source)
+
+  if([&#x27;.jade&#x27;, &#x27;.md&#x27;, &#x27;.ejs&#x27;].indexOf(ext)  !== -1){
+    return mime.lookup(&#x27;html&#x27;)
+  }else if([&#x27;.less&#x27;, &#x27;.styl&#x27;, &#x27;.scss&#x27;, &#x27;.sass&#x27;].indexOf(ext)  !== -1){
+    return mime.lookup(&#x27;css&#x27;)
+  } else if ([&#x27;.js&#x27;, &#x27;.coffee&#x27;].indexOf(ext) !== -1) {
+    return mime.lookup(&#x27;js&#x27;)
+  } else {
+    return mime.lookup(source)
+  }
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.helpers.normalizeUrl" id="apidoc.element.harp.helpers.normalizeUrl">
+        function <span class="apidocSignatureSpan">harp.helpers.</span>normalizeUrl
+        <span class="apidocSignatureSpan">(url)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">normalizeUrl = function (url){
+
+  // take off query string
+  var base = unescape(url.split(&#x27;?&#x27;)[0])
+
+<span class="apidocCodeCommentSpan">  /**
+   * Normalize Path
+   *
+   * Note: This converts unix paths to windows path on windows
+   * (not sure if this is a good thing)
+   */
+</span>  var file_path = path.normalize(base)
+
+  // index.html support
+  if (path.sep == file_path[file_path.length - 1]) file_path += &#x27;index.html&#x27;
+
+  return file_path
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.helpers.prime" id="apidoc.element.harp.helpers.prime">
+        function <span class="apidocSignatureSpan">harp.helpers.</span>prime
+        <span class="apidocSignatureSpan">(primePath, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">prime = function (primePath, options, callback){
+
+  if(!callback){
+    callback = options
+    options = {}
+  }
+
+<span class="apidocCodeCommentSpan">  /**
+   * Options (only one)
+   */
+</span>  var ignorePath = options.ignore
+    ? path.resolve(primePath, options.ignore)
+    : null
+
+  // Absolute paths are predictable.
+  var primePath = path.resolve(primePath)
+
+  fse.mkdirp(primePath, function(){
+    fse.readdir(primePath, function(error, contents){
+
+      /**
+       * Delete each item in the directory in parallel. Thanks Ry!
+       */
+
+      if(contents.length == 0) return callback()
+
+      var total = contents.length
+      var count = 0
+
+
+      contents.forEach(function(i){
+        var filePath  = path.resolve(primePath, i)
+        var gitRegExp = new RegExp(/^.git/)
+
+        /**
+         * We leave `.git`, `.gitignore`, and project path.
+         */
+        if(filePath === ignorePath || i.match(gitRegExp)){
+          count++
+          if(count == total) callback()
+        }else{
+          fse.remove(filePath, function(err){
+            count++
+            if(count == total) callback()
+          })
+        }
+      })
+
+    })
+  })
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.helpers.setup" id="apidoc.element.harp.helpers.setup">
+        function <span class="apidocSignatureSpan">harp.helpers.</span>setup
+        <span class="apidocSignatureSpan">(projectPath, env)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setup = function (projectPath, env){
+  if(!env) env = &#x22;development&#x22;
+
+  try{
+    var configPath  = path.join(projectPath, &#x22;harp.json&#x22;)
+    var contents    = fs.readFileSync(configPath).toString()
+    var publicPath  = path.join(projectPath, &#x22;public&#x22;)
+  }catch(e){
+    try{
+      var configPath  = path.join(projectPath, &#x22;_harp.json&#x22;)
+      var contents    = fs.readFileSync(configPath).toString()
+      var publicPath  = projectPath
+    }catch(e){
+      var contents    = &#x22;{}&#x22;
+      var publicPath  = projectPath
+    }
+  }
+
+  // not sure what this does anymore.
+  if(!contents || contents.replace(/^\s\s*/, &#x27;&#x27;).replace(/\s\s*$/, &#x27;&#x27;) == &#x27;&#x27;){
+    contents = &#x27;{}&#x27;
+  }
+
+  // attempt to parse the file
+  try{
+    var cfg = JSON.parse(contents)
+  }catch(e){
+    e.source    = &#x22;JSON&#x22;
+    e.dest      = &#x22;CONFIG&#x22;
+    e.message   = e.message
+    e.filename  = configPath
+    e.stack     = contents
+    e.lineno    = -1
+    throw new terraform.helpers.TerraformError(e)
+  }
+
+  if(!cfg.hasOwnProperty(&#x27;globals&#x27;)) cfg[&#x27;globals&#x27;] = {}
+
+  cfg.globals.environment = process.env.NODE_ENV || env
+
+  // replace values that look like environment variables
+  // e.g. &#x27;$foo&#x27; -&#x3e; process.env.foo
+  cfg = envy(cfg)
+
+  return {
+    projectPath : projectPath,
+    publicPath  : publicPath,
+    config      : cfg
+  }
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.helpers.stacktrace" id="apidoc.element.harp.helpers.stacktrace">
+        function <span class="apidocSignatureSpan">harp.helpers.</span>stacktrace
+        <span class="apidocSignatureSpan">(str, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stacktrace = function (str, options){
+  var lineno  = options.lineno  || -1
+  var context = options.context || 8
+  var context = context = context / 2
+  var lines   = (&#x27;\n&#x27; + str).split(&#x27;\n&#x27;)
+  var start   = Math.max(lineno - context, 1)
+  var end     = Math.min(lines.length, lineno + context)
+
+  if(lineno === -1) end = lines.length
+
+  var pad     = end.toString().length
+
+  var context = lines.slice(start, end).map(function(line, i){
+    var curr = i + start
+    return (curr == lineno ? &#x27; &#x3e; &#x27; : &#x27;   &#x27;)
+      + Array(pad - curr.toString().length + 1).join(&#x27; &#x27;)
+      + curr
+      + &#x27;| &#x27;
+      + line
+  }).join(&#x27;\n&#x27;)
+
+  return context
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.helpers.willAllow" id="apidoc.element.harp.helpers.willAllow">
+        function <span class="apidocSignatureSpan">harp.helpers.</span>willAllow
+        <span class="apidocSignatureSpan">(projectPath, outputPath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">willAllow = function (projectPath, outputPath){
+  var projectPath   = path.resolve(projectPath)
+  var outputPath    = path.resolve(outputPath)
+  var relativePath  = path.relative(projectPath, outputPath)
+  var arr           = relativePath.split(path.sep)
+
+  if(willCollide(projectPath, outputPath)){
+    if(relativePath === &#x22;..&#x22;){
+      if(projectPath.split(path.sep)[projectPath.split(path.sep).length - 1][0] == &#x22;_&#x22;){
+        return true
+      }else{
+        return false
+      }
+    }else{
+      return false
+    }
+  }else{
+    return true
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.helpers.willCollide" id="apidoc.element.harp.helpers.willCollide">
+        function <span class="apidocSignatureSpan">harp.helpers.</span>willCollide
+        <span class="apidocSignatureSpan">(projectPath, outputPath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">willCollide = function (projectPath, outputPath){
+  var projectPath   = path.resolve(projectPath)
+  var outputPath    = path.resolve(outputPath)
+  var relativePath  = path.relative(projectPath, outputPath)
+  var arr           = relativePath.split(path.sep)
+  var result        = true;
+
+  arr.forEach(function(i){
+    if(i !== &#x22;..&#x22;) result = false
+  })
+
+<span class="apidocCodeCommentSpan">  /**
+   * for @kennethormandy ;)
+   */
+</span>  if ([path.sep, &#x22;C:\\&#x22;].indexOf(outputPath) !== -1) result = true
+
+  /**
+   * For #400
+   */
+  if (projectPath === outputPath) result = true
+
+  return result
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.harp.middleware" id="apidoc.module.harp.middleware">module harp.middleware</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.harp.middleware.basicAuth" id="apidoc.element.harp.middleware.basicAuth">
+        function <span class="apidocSignatureSpan">harp.middleware.</span>basicAuth
+        <span class="apidocSignatureSpan">(req, rsp, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">basicAuth = function (req, rsp, next){
+
+  // default empty
+  var creds = []
+
+  // allow array
+  if(req.setup.config.hasOwnProperty(&#x22;basicAuth&#x22;) &#x26;&#x26; req.setup.config[&#x22;basicAuth&#x22;] instanceof Array)
+    creds = req.setup.config[&#x22;basicAuth&#x22;]
+
+  // allow string
+  if(req.setup.config.hasOwnProperty(&#x22;basicAuth&#x22;) &#x26;&#x26; typeof req.setup.config[&#x22;basicAuth&#x22;] === &#x27;string&#x27;)
+    creds = [req.setup.config[&#x22;basicAuth&#x22;]]
+
+  // move on if no creds
+  if(creds.length === 0) return next()
+
+  // use connect auth lib iterate over all creds provided
+  connect.basicAuth(function(user, pass){
+    return creds.some(function(cred){
+      return cred === user + &#x22;:&#x22; + pass
+    })
+  })(req, rsp, next)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.middleware.fallback" id="apidoc.element.harp.middleware.fallback">
+        function <span class="apidocSignatureSpan">harp.middleware.</span>fallback
+        <span class="apidocSignatureSpan">(req, rsp, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fallback = function (req, rsp, next){
+  skin(req, rsp, [custom200static, custom200dynamic, notFound], next)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.middleware.hostProjectFinder" id="apidoc.element.harp.middleware.hostProjectFinder">
+        function <span class="apidocSignatureSpan">harp.middleware.</span>hostProjectFinder
+        <span class="apidocSignatureSpan">(dirPath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hostProjectFinder = function (dirPath){
+  return function(req, rsp, next){
+    var host        = req.headers.host;
+    var hostname    = host.split(&#x27;:&#x27;)[0];
+    var matches     = [];
+
+    fs.readdir(dirPath, function(err, files){
+      var appPart = hostname.split(&#x22;.&#x22;)[0];
+      files.forEach(function(file){
+        var fp = file.split(&#x27;.&#x27;);
+        var filePart;
+        // Check against Reserved Domains first.
+        if (fp.length &#x3e; 2) {
+          var domain = fp.slice(Math.max(fp.length - 2, 1)).join(&#x22;.&#x22;);
+          if (reservedDomains.indexOf(domain) != -1) {
+            fp = fp.slice(0, Math.max(fp.length - 2))
+          }
+        }
+
+        filePart = fp.join(&#x22;_&#x22;);
+        if (appPart == filePart) {
+          matches.push(file);
+        }
+      });
+
+      if(matches.length &#x3e; 0){
+        req.projectPath = path.resolve(dirPath, matches[0]);
+        next();
+      } else {
+        rsp.end(&#x22;Cannot find project&#x22;)
+      }
+
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.middleware.index" id="apidoc.element.harp.middleware.index">
+        function <span class="apidocSignatureSpan">harp.middleware.</span>index
+        <span class="apidocSignatureSpan">(dirPath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">index = function (dirPath){
+  return function(req, rsp, next){
+    var host      = req.headers.host;
+    var hostname  = host.split(&#x27;:&#x27;)[0];
+    var arr       = hostname.split(&#x22;.&#x22;);
+    var port      = host.split(&#x27;:&#x27;)[1] ? &#x27;:&#x27; + host.split(&#x27;:&#x27;)[1] : &#x27;&#x27;;
+    var poly      = terraform.root(__dirname + &#x22;/templates&#x22;);
+
+    if(arr.length == 2){
+      fs.readdir(dirPath, function(err, files){
+        var projects = [];
+
+        files.forEach(function(file){
+          var local = file.split(&#x27;.&#x27;);
+
+          var appPart = local.join(&#x22;_&#x22;);
+
+          if (local.length &#x3e; 2) {
+            var domain = local.slice(Math.max(local.length - 2, 1)).join(&#x22;.&#x22;);
+            if (reservedDomains.indexOf(domain) != -1) {
+              appPart =  local[0];
+            }
+          }
+
+          // DOT files are ignored.
+          if (file[0] !== &#x22;.&#x22;) {
+            projects.push({
+              &#x22;name&#x22;      : file,
+              &#x22;localUrl&#x22;  : &#x27;http://&#x27; + appPart + &#x22;.&#x22; + host,
+              &#x22;localPath&#x22; : path.resolve(dirPath, file)
+            });
+          }
+        });
+
+        poly.render(&#x22;index.jade&#x22;, { pkg: pkg, projects: projects, layout: &#x22;_layout.jade&#x22; }, function(error, body){
+          rsp.end(body)
+        });
+      })
+    } else {
+      next();
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.middleware.mwl" id="apidoc.element.harp.middleware.mwl">
+        function <span class="apidocSignatureSpan">harp.middleware.</span>mwl
+        <span class="apidocSignatureSpan">(req, rsp, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">mwl = function (req, rsp, next){
+  var ext = path.extname(req.url).replace(/^\./, &#x27;&#x27;)
+  req.originalExt = ext
+
+  // This prevents the source files from being served, but also
+  // has to factor in that in this brave new world, sometimes
+  // `.html` (Handlebars, others), `.css` (PostCSS), and
+  // `.js` (Browserify) are actually being used to specify
+  // source files
+
+  //if ([&#x27;js&#x27;].indexOf(ext) === -1) {
+    if (terraform.helpers.processors[&#x22;html&#x22;].indexOf(ext) !== -1 || terraform.helpers.processors[&#x22;css&#x22;].indexOf(ext) !== -1 || terraform
+.helpers.processors[&#x22;js&#x22;].indexOf(ext) !== -1) {
+      notFound(req, rsp, next)
+    } else {
+      next()
+    }
+  //} else {
+    //next()
+  //}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.middleware.notFound" id="apidoc.element.harp.middleware.notFound">
+        function <span class="apidocSignatureSpan">harp.middleware.</span>notFound
+        <span class="apidocSignatureSpan">(req, rsp, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">notFound = function (req, rsp, next){
+  skin(req, rsp, [custom404static, custom404dynamic, default404], next)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.middleware.notMultihostURL" id="apidoc.element.harp.middleware.notMultihostURL">
+        function <span class="apidocSignatureSpan">harp.middleware.</span>notMultihostURL
+        <span class="apidocSignatureSpan">(req, rsp, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">notMultihostURL = function (req, rsp, next){
+  var host      = req.headers.host
+  var hostname  = host.split(&#x27;:&#x27;)[0]
+  var arr       = hostname.split(&#x22;.&#x22;)
+  var port      = host.split(&#x27;:&#x27;)[1] ? &#x27;:&#x27; + host.split(&#x27;:&#x27;)[1] : &#x27;&#x27;
+
+  if(hostname == &#x22;127.0.0.1&#x22; || hostname == &#x22;localhost&#x22;){
+    rsp.statusCode = 307
+    rsp.setHeader(&#x27;Location&#x27;, &#x27;http://harp.nu&#x27; + port)
+    rsp.end(&#x22;redirecting you to http://harp.nu&#x22; + port)
+  }else if(arr.length == 4){
+    arr.pop()
+    arr.push(&#x27;io&#x27;)
+    var link = &#x27;http://&#x27; + arr.join(&#x27;.&#x27;) + port
+    var body = &#x22;Local server does not support history. Perhaps you are looking for &#x3c;href=&#x27;&#x22; + link + &#x22;&#x27;&#x3e;&#x22; + link + &#x22;&#x3c;/a&#x3e;.&#x22;
+    rsp.statusCode = 307
+    rsp.end(body)
+  }else if(arr.length &#x3e; 4){
+    arr.shift()
+    var link = &#x27;http://&#x27; + arr.join(&#x27;.&#x27;) + port
+    rsp.statusCode = 307
+    rsp.setHeader(&#x27;Location&#x27;, link)
+    rsp.end(&#x22;redirecting you to &#x22; + link)
+  }else{
+    next()
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.middleware.poly" id="apidoc.element.harp.middleware.poly">
+        function <span class="apidocSignatureSpan">harp.middleware.</span>poly
+        <span class="apidocSignatureSpan">(req, rsp, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">poly = function (req, rsp, next){
+  if(req.hasOwnProperty(&#x22;poly&#x22;)) return next()
+
+  try{
+    req.poly = terraform.root(req.setup.publicPath, req.setup.config.globals)
+  }catch(error){
+    error.stack = helpers.stacktrace(error.stack, { lineno: error.lineno })
+    var locals = {
+      project: req.headers.host,
+      error: error,
+      pkg: pkg
+    }
+    return terraform.root(__dirname + &#x22;/templates&#x22;).render(&#x22;error.jade&#x22;, locals, function(err, body){
+      rsp.statusCode = 500
+      rsp.end(body)
+    })
+  }
+  next()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.middleware.process" id="apidoc.element.harp.middleware.process">
+        function <span class="apidocSignatureSpan">harp.middleware.</span>process
+        <span class="apidocSignatureSpan">(req, rsp, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">process = function (req, rsp, next){
+  var normalizedPath  = helpers.normalizeUrl(req.url)
+  var priorityList    = terraform.helpers.buildPriorityList(normalizedPath)
+  var sourceFile      = terraform.helpers.findFirstFile(req.setup.publicPath, priorityList)
+
+
+<span class="apidocCodeCommentSpan">  /**
+   * We GTFO if we don&#x27;t have a source file.
+   */
+</span>
+  if(!sourceFile){
+    if (path.basename(normalizedPath) === &#x22;index.html&#x22;) {
+      var pathAr = normalizedPath.split(path.sep); pathAr.pop() // Pop index.html off the list
+      var prospectCleanPath       = pathAr.join(&#x22;/&#x22;)
+      var prospectNormalizedPath  = helpers.normalizeUrl(prospectCleanPath)
+      var prospectPriorityList    = terraform.helpers.buildPriorityList(prospectNormalizedPath)
+      prospectPriorityList.push(path.basename(prospectNormalizedPath + &#x22;.html&#x22;))
+
+      sourceFile = terraform.helpers.findFirstFile(req.setup.publicPath, prospectPriorityList)
+
+      if (!sourceFile) {
+        return next()
+      } else {
+        // 301 redirect
+        rsp.statusCode = 301
+        rsp.setHeader(&#x27;Location&#x27;, prospectCleanPath)
+        rsp.end(&#x27;Redirecting to &#x27; + utilsEscape(prospectCleanPath))
+      }
+
+    } else {
+      return next()
+    }
+  } else {
+
+    /**
+     * Now we let terraform handle the asset pipeline.
+     */
+
+    req.poly.render(sourceFile, function(error, body){
+      if(error){
+        error.stack = helpers.stacktrace(error.stack, { lineno: error.lineno })
+
+        var locals = {
+          project: req.headers.host,
+          error: error,
+          pkg: pkg
+        }
+        if(terraform.helpers.outputType(sourceFile) == &#x27;css&#x27;){
+          var outputType = terraform.helpers.outputType(sourceFile)
+          var mimeType   = helpers.mimeType(outputType)
+          var charset    = mime.charsets.lookup(mimeType)
+          var body       = helpers.cssError(locals)
+          rsp.statusCode = 200
+          rsp.setHeader(&#x27;Content-Type&#x27;, mimeType + (charset ? &#x27;; charset=&#x27; + charset : &#x27;&#x27;))
+          rsp.setHeader(&#x27;Content-Length&#x27;, Buffer.byteLength(body, charset));
+          rsp.end(body)
+        }else{
+
+          // Make the paths relative but keep the root dir.
+          // TODO: move to helper.
+          //
+          // var loc = req.projectPath.split(path.sep); loc.pop()
+          // var loc = loc.join(path.sep) + path.sep
+          // if(error.filename) error.filename = error.filename.replace(loc, &#x22;&#x22;)
+
+          terraform.root(__dirname + &#x22;/templates&#x22;).render(&#x22;error.jade&#x22;, locals, function(err, body){
+            var mimeType   = helpers.mimeType(&#x27;html&#x27;)
+            var charset    = mime.charsets.lookup(mimeType)
+            rsp.statusCode = 500
+            rsp.setHeader(&#x27;Content-Type&#x27;, mimeType + (charset ? &#x27;; charset=&#x27; + charset : &#x27;&#x27;))
+            rsp.setHeader(&#x27;Content-Length&#x27;, Buffer.byteLength(body, charset));
+            rsp.end(body)
+          })
+        }
+      }else{
+        // 404
+        if(!body) return next()
+
+        var outputType = terraform.helpers.outputType(sourceFile)
+        var mimeType   = helpers.mimeType(outputType)
+        var charset    = mime.charsets.lookup(mimeType)
+        rsp.statusCode = 200
+        rsp.setHeader(&#x27;Content-Type&#x27;, mimeType + (charset ? &#x27;; charset=&#x27; + charset : &#x27;&#x27;))
+        rsp.setHeader(&#x27;Content-Length&#x27;, Buffer.byteLength(body, charset));
+        rsp.end(body);
+      }
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.middleware.regProjectFinder" id="apidoc.element.harp.middleware.regProjectFinder">
+        function <span class="apidocSignatureSpan">harp.middleware.</span>regProjectFinder
+        <span class="apidocSignatureSpan">(projectPath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">regProjectFinder = function (projectPath){
+  return function(req, rsp, next){
+    req.projectPath = projectPath
+    next()
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.middleware.setup" id="apidoc.element.harp.middleware.setup">
+        function <span class="apidocSignatureSpan">harp.middleware.</span>setup
+        <span class="apidocSignatureSpan">(req, rsp, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setup = function (req, rsp, next){
+  if(req.hasOwnProperty(&#x27;setup&#x27;)) return next()
+
+  try{
+    req.setup = helpers.setup(req.projectPath)
+  }catch(error){
+    error.stack = helpers.stacktrace(error.stack, { lineno: error.lineno })
+
+    var locals = {
+      project: req.headers.host,
+      error: error,
+      pkg: pkg
+    }
+
+    return terraform.root(__dirname + &#x22;/templates&#x22;).render(&#x22;error.jade&#x22;, locals, function(err, body){
+      rsp.statusCode = 500
+      rsp.end(body)
+    })
+  }
+
+  next()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.middleware.static" id="apidoc.element.harp.middleware.static">
+        function <span class="apidocSignatureSpan">harp.middleware.</span>static
+        <span class="apidocSignatureSpan">(req, res, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">static = function (req, res, next) {
+  var options  = {}
+  var redirect = true
+
+  if (&#x27;GET&#x27; != req.method &#x26;&#x26; &#x27;HEAD&#x27; != req.method) return next()
+  //if ([&#x27;js&#x27;].indexOf(path.extname(req.url).replace(/^\./, &#x27;&#x27;)) !== -1) return next()
+
+  var pathn = parse(req).pathname;
+  var pause = utilsPause(req);
+
+  function resume() {
+    next();
+    pause.resume();
+  }
+
+  function directory() {
+
+    if (!redirect) return resume();
+    var pathname = url.parse(req.originalUrl).pathname;
+    res.statusCode = 301;
+    res.setHeader(&#x27;Location&#x27;, pathname + &#x27;/&#x27;);
+    res.end(&#x27;Redirecting to &#x27; + utilsEscape(pathname) + &#x27;/&#x27;);
+  }
+
+  function error(err) {
+    if (404 == err.status){
+      // look for implicit `*.html` if we get a 404
+      return path.extname(err.path) === &#x27;&#x27;
+        ? serve(pathn + &#x22;.html&#x22;)
+        : resume()
+    }
+    next(err);
+  }
+
+  var serve = function(pathn){
+    send(req, pathn, {
+        maxage: options.maxAge || 0,
+        root: req.setup.publicPath,
+        hidden: options.hidden
+      })
+      .on(&#x27;error&#x27;, error)
+      .on(&#x27;directory&#x27;, directory)
+      .pipe(res)
+  }
+  serve(pathn)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var harp = require(&#x22;harp&#x22;);
+var app = express();
+```
+
+```js
+// Express 3
+app.configure(function(){
+  app.use(express.<span class="apidocCodeKeywordSpan">static</span>(__dirname + &#x22;/public&#x22;));
+  app.use(harp.mount(__dirname + &#x22;/public&#x22;));
+});
+```
+
+```js
+// Express 4
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.harp.middleware.underscore" id="apidoc.element.harp.middleware.underscore">
+        function <span class="apidocSignatureSpan">harp.middleware.</span>underscore
+        <span class="apidocSignatureSpan">(req, rsp, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">underscore = function (req, rsp, next){
+  if(terraform.helpers.shouldIgnore(req.url)){
+    notFound(req, rsp, next)
+  }else{
+    next()
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
